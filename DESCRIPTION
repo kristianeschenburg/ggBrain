@@ -5,15 +5,11 @@ Version: 0.1
 Author: Aaron Fisher <fisher@jhu.edu>
 Maintainer: Aaron Fisher <fisher@jhu.edu>
 VignetteBuilder: knitr
-Depends:
-    R (>= 3.0.2)
-Imports:
-    ggplot2,
-    RColorBrewer
-Suggests:
-    knitr,
-    gridExtra,
-    brainR,
-    oro.nifti
+Depends:    R (>= 3.0.2)
+Imports:    ggplot2,    RColorBrewer
+Suggests:    knitr,    gridExtra,    brainR,    oro.nifti
 License: GPL-2
 LazyData: true
+Remotes: neuroconductor/brainR@6c4dc1f471686f8c95d27116220e73b1f05cd8f0, neuroconductor/oro.nifti@141d6f48b4101b490385054665570ec45216c669
+biocViews:
+
