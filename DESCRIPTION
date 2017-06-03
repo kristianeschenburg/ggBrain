@@ -10,6 +10,6 @@ Imports:    ggplot2,    RColorBrewer
 Suggests:    knitr,    gridExtra,    brainR,    oro.nifti
 License: GPL-2
 LazyData: true
-Remotes: neuroconductor/brainR@6c4dc1f471686f8c95d27116220e73b1f05cd8f0, neuroconductor/oro.nifti@141d6f48b4101b490385054665570ec45216c669
 biocViews:
+Remotes: neuroconductor/brainR@d48d6fb07f7efb659dc732a75d94697a7b64ae25, neuroconductor/oro.nifti@ab8a1e9b60bce9e7e48984a37e7dce607f51fdb0
 
