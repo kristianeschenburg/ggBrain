@@ -17,4 +17,4 @@ License: GPL-2
 LazyData: true
 biocViews:
 Remotes: neuroconductor/oro.nifti@248fafa9254064c3290286abd3ecf2dd791286fb,
-    neuroconductor/brainR@c043363372889b26fd6ed6fe174113852883eeac
+    neuroconductor/brainR@74557257a712a569bbf4e423ab429bcec4c9ef99
