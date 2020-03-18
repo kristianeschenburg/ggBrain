@@ -1,7 +1,6 @@
 language: r
 warnings_are_errors: false
 cache: false
-use_bioc: true
 bioc_required: true
 cran: http://cran.rstudio.com
 dist: trusty
@@ -15,9 +14,7 @@ addons:
     - mesa-common-dev
     - libglu1-mesa-dev
     - devscripts
-os:
-- linux
-- osx
+os: linux
 services: xvfb
 r: release
 env:
@@ -30,7 +27,7 @@ env:
   - DISPLAY=:99.0
   - R_REMOTES_NO_ERRORS_FROM_WARNINGS=true
   - _R_CHECK_FORCE_SUGGESTS_=false
-  - secure: A5KFuI+p2GdUjIk8Chf6aIyh1udyHCJ2LmSeEmrx4Ht4nQ/VNWJSYNyQ/uD5U5qf/br1SuY8njeylvxyBja+JyRnokPcxsolJc1u8rWrj5b2dVdtzm3340ybagfzKDaTMl6r7T1LgkkmGnjIyo2DZ0eYvGqk0AQiGUFJT2ITEsx1b5Q8QnZFKOVPKel9luZ1v2TXDtWXSFaLxoQMYJiCKAqdbzlC8mcFCoMme1HGPe9OGwMoPfosv1SozeA8sCbUpUKHi5uc/Qgku4OzDwJ0WS3LsrfpbcH6mjpZzkPfyPDj0C9txEBgMVrFTFdQvmIknPHMN2rYFpBvPrKt0cNUv5uVOKvAEOdICcefSDhRwCeHtx3kkO0L7Bzmn3wEq3MEoIX5n6hzdS5lMuvShoRAjW98PCW2ZDaKEGHEqRLsF4Ilwxpavo3Kkb2qkgmPuqPMWQxUIuNSa5+nKWwKWCcnDQxiHywa0N34zy0l+o3jF0tCOzzJaUG7kIeN3cwgi5Sp5d3O/OQoqOCrPv4jIOsUdkjCfd9Q0WIAaXNapWojaGvSoX8CuoCd67fwoze7wg2Ky3OsFtXGImbzR986UTzjZXiPIr6zG4LMqhIC+EFqVmLHLvZdEbB1CzsBVMrfTpMNodpiaX3GJ/0OubHFdhlLGjeyG59rMxcU08cXEArePCk=
+  - secure: BKbHvqK6Q2e2oXUVsxmXle+RMaqzjaVT28tCqJJ4Q4lxE/zvTfbsuZML5WJ+Q3DCv1S8iYEsFVRAj1JKyzq/G6b1XyZ+YL0fAqyAEEqDcG31buDm00PeMJGScigDcjzzDoHu1DOUuC3QDGhznMfUtmGoI/rMxKuehoxsmkF7ZsDe1AmwpfskU005QG28Cz3jx2/+MXSR9KUPuqZwMIHk4bOwRe3reW9JZY1lIcT4ItL9TTYVcJke1ftf7We+2y9E2QRnNilZa9NVS/90h8uR4YkZ7/eXGBQDvTGwXspN2etQwHq58RiT2eLUeGBidDYkp9KUFu0pbdVjDjb6itKno0uZLsWCv69Vx2/38BOM3ycnhWf3IAw2e8ZbAMPZ79+RhXEWAEsSmwYX3GiWk9P3XprUTL3xtJx7sdOJTAOTWj3oK5IIZV6ACbSeeMXjU/eZastYgGwVMWBCMe9RwW56fykHoOWmhi3ib+Wqpy3sUKIm+WViSTd/jdygjJ1mQp6JNsS+UvaPJ2YoGxvBmC0o285g7Pbb69qrzBobglnPZGbQ0SCmnboxTgqEC9P4HLt6RwK1SOlcAb5IJDLV/OEnKrwHvv05WEp9/VWtQfslYTjORD+ibjfXu7ZUR60rsGVfNZZ78EuxgYvnM6ECipoc0x0w4ZnAoW11M59T13mevOY=
 before_install:
 - if [ "$TRAVIS_DIST" = "trusty" ]; then sudo apt-get -y install libgsl0ldbl ; fi
 - ulimit -n 2048
@@ -89,14 +86,11 @@ script:
 - Rscript -e 'install.packages("remotes")'
 - Rscript -e 'remotes::install_github("hadley/pkgdown")'
 - travis_wait 100 Rscript -e 'pkgdown::build_site()'
-after_failure: 
-before_deploy: 
 deploy:
   provider: pages
-  skip-cleanup: true
-  keep-history: true
-  local-dir: docs
+  skip_cleanup: true
+  keep_history: true
+  local_dir: docs
   on:
     branch: master
-  github_token: "$GITHUB_TOKEN"
-after_deploy: 
+  token: "$GITHUB_TOKEN"
