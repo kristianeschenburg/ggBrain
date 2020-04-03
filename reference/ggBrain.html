@@ -17,16 +17,20 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
+
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" integrity="sha256-PbSmjxuVAzJ6FPvNYsrXygfGhNJYyZ2GktDbkMBqQZg=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/v4-shims.min.css" integrity="sha256-A6jcAdwFD48VMjlI3GDxUd+eCQa7/KWy6G9oe/ovaPA=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -36,7 +40,13 @@
 
 
 <meta property="og:title" content="Plotting brain images with ggplot — ggBrain" />
-<meta property="og:description" content="ggBrain creates ggplot brain images with minimal user input. This function calls getBrainFrame, which generates a data frame for use in ggplot objects. Aesthetic changes to the resulting figures can be made with standard ggplot functions, such as scale_fill_gradient2. The getBrainFrame function can also be directly accessed by the user, for a deeper control of aesthetics." />
+<meta property="og:description" content="ggBrain creates ggplot brain images with minimal user input. 
+This function calls getBrainFrame, which generates a data frame 
+for use in ggplot objects. Aesthetic changes to the resulting figures 
+can be made with standard ggplot functions, such as 
+scale_fill_gradient2. The getBrainFrame
+ function can also be directly accessed by the user, for a deeper 
+ control of aesthetics." />
 
 
 
@@ -54,7 +64,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -68,7 +78,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ggBrain</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
       </span>
     </div>
 
@@ -117,7 +127,13 @@
     </div>
 
     <div class="ref-description">
-    <p><code>ggBrain</code> creates ggplot brain images with minimal user input. This function calls <code>getBrainFrame</code>, which generates a data frame for use in ggplot objects. Aesthetic changes to the resulting figures can be made with standard ggplot functions, such as <code><a href='https://ggplot2.tidyverse.org/reference/scale_gradient.html'>scale_fill_gradient2</a></code>. The <code>getBrainFrame</code> function can also be directly accessed by the user, for a deeper control of aesthetics.</p>
+    <p><code>ggBrain</code> creates ggplot brain images with minimal user input. 
+This function calls <code>getBrainFrame</code>, which generates a data frame 
+for use in ggplot objects. Aesthetic changes to the resulting figures 
+can be made with standard ggplot functions, such as 
+<code><a href='https://ggplot2.tidyverse.org/reference/scale_gradient.html'>scale_fill_gradient2</a></code>. The <code>getBrainFrame</code>
+ function can also be directly accessed by the user, for a deeper 
+ control of aesthetics.</p>
     </div>
 
     <pre class="usage"><span class='fu'>ggBrain</span>(<span class='no'>brains</span>, <span class='kw'>template</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>mar</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='no'>mar_ind</span>, <span class='kw'>row_ind</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>1</span>,
@@ -138,101 +154,172 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>brains</th>
-      <td><p>A list of 4-D arrays of brain images, with time on the fourth dimension. Alternatively, a list of 3-D arrays, a single 3-D, or a single 4-D array can be entered.</p></td>
-    </tr>
-    <tr>
-      <th>mask</th>
-      <td><p>A 3-D binary array of which voxels in the image to plot. If no mask is provided, the mask is set to be all voxels not equal to <code>NA</code>.</p></td>
+      <td><p>A list of 4-D arrays of brain images, with time on the 
+fourth dimension. Alternatively, a list of 3-D arrays, a single 3-D, 
+or a single 4-D array can be entered.</p></td>
     </tr>
     <tr>
       <th>template</th>
-      <td><p>A 3-D structural brain image over which to plot voxelwise statistics, such as p-values or seed correlations.</p></td>
+      <td><p>A 3-D structural brain image over which to plot 
+voxelwise statistics, such as p-values or seed correlations.</p></td>
     </tr>
     <tr>
       <th>mar</th>
-      <td><p>a numeric vector. The length of this vector should be equal to the number of panels in the figure. The \(j^{th}\) element of <code>mar</code> tells which margin of the image to slice over, for the \(j^{th}\) panel (see examples).</p></td>
+      <td><p>a numeric vector. The length of this vector should be 
+equal to the number of panels in the figure. The \(j^{th}\) 
+element of <code>mar</code> tells which margin of the image to slice 
+over, for the \(j^{th}\) panel (see examples).</p></td>
     </tr>
     <tr>
       <th>mar_ind</th>
-      <td><p>a numeric vector of the same length as <code>mar</code>.  The \(j^{th}\) element of <code>mar_ind</code> tells the slice number to be shown in the \(j^{th}\) panel.</p></td>
+      <td><p>a numeric vector of the same length as <code>mar</code>.
+The \(j^{th}\) element of <code>mar_ind</code> tells the slice number 
+to be shown in the \(j^{th}\) panel.</p></td>
     </tr>
     <tr>
       <th>row_ind</th>
-      <td><p>a numeric vector of the same length as <code>mar</code>, which partially determines the layout of the image plots.  The \(j^{th}\) element of <code>row_ind</code> tells the row number where the \(j^{th}\) panel should be positioned.</p></td>
+      <td><p>a numeric vector of the same length as <code>mar</code>, 
+which partially determines the layout of the image plots.  
+The \(j^{th}\) element of <code>row_ind</code> tells the row number 
+where the \(j^{th}\) panel should be positioned.</p></td>
     </tr>
     <tr>
       <th>col_ind</th>
-      <td><p>a numeric vector of the same length as <code>mar</code>, which partially determines the layout of the image plots.  The \(j^{th}\) element of <code>row_ind</code> tells the column number where the \(j^{th}\) panel should be positioned.</p></td>
-    </tr>
-    <tr>
-      <th>brain_ind</th>
-      <td><p>a vector of the same length as <code>mar</code>. The \(j^{th}\) element of <code>brain_ind</code> tells the index number of the appropriate brain image to be plotted in the \(j^{th}\) panel, from the list <code>brains</code>.</p></td>
-    </tr>
-    <tr>
-      <th>time</th>
-      <td><p>a vector of the same length as <code>mar</code>, used for plotting snapshots of 4-D fMRI data over time. The \(j^{th}\) element of <code>time</code> tells the time index to be used for the \(j^{th}\) panel.</p></td>
+      <td><p>a numeric vector of the same length as <code>mar</code>, 
+which partially determines the layout of the image plots.  
+The \(j^{th}\) element of <code>row_ind</code> tells the column 
+number where the \(j^{th}\) panel should be positioned.</p></td>
     </tr>
     <tr>
       <th>col_template</th>
-      <td><p>a vector of colors to be used for displaying the template brain image.</p></td>
+      <td><p>a vector of colors to be used for displaying 
+the template brain image.</p></td>
     </tr>
     <tr>
       <th>type</th>
-      <td><p>the type of brain image to be shown, either 'signed', 'positive', 'binary' or 'structural'. These types should be used when the objects in <code>brains</code> are, respectively, images of voxelwise statistics that can be positive or negative (e.g. seed correlations); images of voxelwise statistics that are all positive (e.g. p-values); binary masks to be shown on top of tempaltes; or structural brain images that do not contain voxelwise statistics. When setting <code>type='structural'</code> there is no need to input a template brain image.</p></td>
+      <td><p>the type of brain image to be shown, either 'signed', 
+'positive',
+ 'binary' or 'structural'. These types should be used when the objects in 
+ <code>brains</code> are, respectively, images of voxelwise statistics that can be
+  positive or negative (e.g. seed correlations); images of voxelwise 
+  statistics that are all positive (e.g. p-values); binary masks to 
+  be shown on top of tempaltes; or structural brain images that 
+  do not contain voxelwise statistics. When setting 
+  <code>type='structural'</code> there is no need to input a template brain image.</p></td>
     </tr>
     <tr>
       <th>binary_color</th>
-      <td><p>the color to be used for plotting either binary masks or voxelwise, positive statistics (e.g. p-values). This argument will be used when <code>type</code> is set to either 'positive' or 'binary'. The color of 'signed' type figures can be changed using the standard ggplot functions for <code>fill</code> (see <code><a href='https://ggplot2.tidyverse.org/reference/scale_gradient.html'>scale_fill_gradient2</a></code>).</p></td>
+      <td><p>the color to be used for plotting either binary masks or
+voxelwise, positive statistics (e.g. p-values). This argument will be used
+ when <code>type</code> is set to either 'positive' or 'binary'. The color 
+ of 'signed' type figures can be changed using the standard ggplot 
+ functions for <code>fill</code> (see <code><a href='https://ggplot2.tidyverse.org/reference/scale_gradient.html'>scale_fill_gradient2</a></code>).</p></td>
     </tr>
     <tr>
       <th>combine_legend</th>
-      <td><p>when <code>type</code> is set to <code>'signed'</code>, the default approach <code>ggBrain</code> takes is to map absolute value of the voxelwise statistic to alpha blending, and sign of the voxelwise statistic to fill. This results in two separate legends. When the <code>combine_legend</code> is set to TRUE, <code>ggBrain</code> creates a new custom scale that combines both binary coloring for sign, and gradual alpha blending for absolute value. Each voxel is binned according to it's value. The legend created shows the upper bounds for each bin. This argument is only used when <code>type</code> is set to <code>'signed'</code>.</p></td>
+      <td><p>when <code>type</code> is set to <code>'signed'</code>, the default
+approach <code>ggBrain</code> takes is to map absolute value of the voxelwise
+ statistic to alpha blending, and sign of the voxelwise statistic to fill.
+  This results in two separate legends. When the <code>combine_legend</code> 
+  is set to TRUE, <code>ggBrain</code> creates a new custom scale that combines 
+  both binary coloring for sign, and gradual alpha blending for absolute
+   value. Each voxel is binned according to it's value. The legend 
+   created shows the upper bounds for each bin. This argument is only 
+   used when <code>type</code> is set to <code>'signed'</code>.</p></td>
     </tr>
     <tr>
       <th>breaks_legend</th>
-      <td><p>the number of bins to use in creating a combined legend. This is only used when <code>combine_legend</code> is set to <code>TRUE</code>.</p></td>
+      <td><p>the number of bins to use in creating a combined legend.
+This is only used when <code>combine_legend</code> is set to <code>TRUE</code>.</p></td>
     </tr>
     <tr>
       <th>digits_legend</th>
-      <td><p>the number of digits to be used in the combined legend for 'signed' plots. This is only used when <code>combine_legend</code> is set to <code>TRUE</code>.</p></td>
+      <td><p>the number of digits to be used in the combined 
+legend for 'signed' plots. This is only used when <code>combine_legend</code> 
+is set to <code>TRUE</code>.</p></td>
     </tr>
     <tr>
       <th>signed_colors</th>
-      <td><p>a vector of length two, with entries corresponding to the colors for negative and positive values of the overlaying voxelwise statistic. This argument is only used when <code>type</code> is set to <code>'signed'</code>.</p></td>
+      <td><p>a vector of length two, with entries corresponding
+to the colors for negative and positive values of the overlaying 
+voxelwise statistic. This argument is only used when <code>type</code> 
+is set to <code>'signed'</code>.</p></td>
     </tr>
     <tr>
       <th>fix_ratio</th>
-      <td><p>whether the aspect ratio should be fixed, to avoid warping of images.</p></td>
+      <td><p>whether the aspect ratio should be fixed, to avoid
+warping of images.</p></td>
     </tr>
     <tr>
       <th>tri_planar</th>
-      <td><p>a special mode for simultaneously plotting saggital, transverse, and coronal brain slices. If set to TRUE, a cross-hair will be plotted to show correspondance between these images (see examples).</p></td>
+      <td><p>a special mode for simultaneously plotting saggital, 
+transverse, and coronal brain slices. If set to TRUE, a cross-hair will 
+be plotted to show correspondance between these images (see examples).</p></td>
     </tr>
     <tr>
       <th>lines_color</th>
-      <td><p>color of the lines defined by <code>lines_mat</code>, or the lines defined by using <code>tri_planar=TRUE</code>.</p></td>
+      <td><p>color of the lines defined by <code>lines_mat</code>, or 
+the lines defined by using <code>tri_planar=TRUE</code>.</p></td>
     </tr>
     <tr>
       <th>center_coords</th>
-      <td><p>whether the brains should be centered. If TRUE, axis tick marks will not be shown. If FALSE, axis tick marks will correspond to slice number</p></td>
-    </tr>
-    <tr>
-      <th>all_brain_and_time_inds_one</th>
-      <td><p>a parameter specific to <code>getBrainFrame</code>, which can generally be ignored by the user. This arguments helps <code>getBrainFrame</code> be called from different contexts within <code>ggBrain</code>, particularly when contructing ggplot objects for the template brain. If set to <code>TRUE</code>, all elements of <code>brain_ind</code> and <code>time</code> will be forced to equal 1.</p></td>
+      <td><p>whether the brains should be centered. If TRUE,
+axis tick marks will not be shown. If FALSE, axis tick marks will 
+correspond to slice number</p></td>
     </tr>
     <tr>
       <th>lines_mat</th>
-      <td><p>a matrix with 3 columns, and one row for each line to be added to the figure. Each row of <code>lines_mat</code> contains a triplet of values, with the first element telling which panel the line should be placed in, the second element containing the margin to plot over, and the third element telling the slice index where the line should be placed. If <code>NULL</code>, no lines will be plotted.</p></td>
+      <td><p>a matrix with 3 columns, and one row for each line to be
+added to the figure. Each row of <code>lines_mat</code> contains a triplet of 
+values, with the first element telling which panel the line should be 
+placed in, the second element containing the margin to plot over, and 
+the third element telling the slice index where the line should be 
+placed. If <code>NULL</code>, no lines will be plotted.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Parameters passed from <code>ggBrain</code> to <code>getBrainFrame</code>, such as <code>time</code> and <code>brain_ind</code>.</p></td>
+      <td><p>Parameters passed from <code>ggBrain</code> to <code>getBrainFrame</code>, 
+such as <code>time</code> and <code>brain_ind</code>.</p></td>
+    </tr>
+    <tr>
+      <th>mask</th>
+      <td><p>A 3-D binary array of which voxels in the image to plot. 
+If no mask is provided, the mask is set to be all voxels not equal 
+to <code>NA</code>.</p></td>
+    </tr>
+    <tr>
+      <th>brain_ind</th>
+      <td><p>a vector of the same length as <code>mar</code>. 
+The \(j^{th}\) element of <code>brain_ind</code> tells the index 
+number of the appropriate brain image to be plotted in the 
+\(j^{th}\) panel, from the list <code>brains</code>.</p></td>
+    </tr>
+    <tr>
+      <th>all_brain_and_time_inds_one</th>
+      <td><p>a parameter specific to 
+<code>getBrainFrame</code>, which can generally be ignored by the user. This 
+arguments helps <code>getBrainFrame</code> be called from different contexts 
+within <code>ggBrain</code>, particularly when contructing ggplot objects for 
+the template brain. If set to <code>TRUE</code>, all elements of <code>brain_ind</code> 
+and <code>time</code> will be forced to equal 1.</p></td>
+    </tr>
+    <tr>
+      <th>time</th>
+      <td><p>a vector of the same length as <code>mar</code>, used for 
+plotting snapshots of 4-D fMRI data over time. The \(j^{th}\) 
+element of <code>time</code> tells the time index to be used for the 
+\(j^{th}\) panel.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>ggBrain</code> returns a ggplot object showing the desired brain images. Further aesthetic changes to the plotting can be added to this ggplot object using the usual ggplot notation (see examples). <code>getBrainFrame</code> outputs a "long" dataframe which can be used in ggplot objects. Accessing this dataframe directly allows the users to have more control over the plotting procedure hard-coded by <code>ggBrain</code>.</p>
+    <p><code>ggBrain</code> returns a ggplot object showing the desired brain images. 
+Further aesthetic changes to the plotting can be added to this ggplot 
+object using the usual ggplot notation (see examples). <code>getBrainFrame</code>
+ outputs a "long" dataframe which can be used in ggplot objects. 
+ Accessing this dataframe directly allows the users to have more 
+ control over the plotting procedure hard-coded by <code>ggBrain</code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
@@ -270,25 +357,32 @@
 <span class='co'># Simple examples, just one plot</span>
 
 <span class='co'># structural image (type = 'structural')</span>
-<span class='no'>dd</span><span class='kw'>&lt;-</span><span class='fu'>ggBrain</span>(<span class='kw'>brains</span><span class='kw'>=</span><span class='no'>hd_template</span>,<span class='kw'>mask</span><span class='kw'>=</span><span class='no'>hd_template</span><span class='kw'>&gt;</span><span class='fl'>0</span>,<span class='kw'>mar</span><span class='kw'>=</span><span class='fl'>3</span>,<span class='kw'>mar_ind</span><span class='kw'>=</span><span class='fl'>93</span>,<span class='kw'>type</span><span class='kw'>=</span><span class='st'>'structural'</span>)
+<span class='no'>dd</span><span class='kw'>&lt;-</span><span class='fu'>ggBrain</span>(<span class='kw'>brains</span><span class='kw'>=</span><span class='no'>hd_template</span>,<span class='kw'>mask</span><span class='kw'>=</span><span class='no'>hd_template</span><span class='kw'>&gt;</span><span class='fl'>0</span>,<span class='kw'>mar</span><span class='kw'>=</span><span class='fl'>3</span>,
+<span class='kw'>mar_ind</span><span class='kw'>=</span><span class='fl'>93</span>,<span class='kw'>type</span><span class='kw'>=</span><span class='st'>'structural'</span>)
 <span class='no'>dd</span>
 <span class='co'>#now add aethetic changes with conventional ggplot code.</span>
 <span class='no'>dd</span> + <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_colour_continuous.html'>scale_fill_continuous</a></span>(<span class='kw'>low</span><span class='kw'>=</span><span class='st'>"black"</span>, <span class='kw'>high</span><span class='kw'>=</span><span class='st'>"white"</span>)+ <span class='fu'>theme_black_bg</span>()
 
 <span class='co'># seed correlation (type = 'signed')</span>
-<span class='no'>dd</span><span class='kw'>&lt;-</span><span class='fu'>ggBrain</span>(<span class='kw'>template</span><span class='kw'>=</span><span class='no'>template</span>,<span class='kw'>brains</span><span class='kw'>=</span><span class='no'>s_map1</span>,<span class='kw'>mask</span><span class='kw'>=</span><span class='no'>mask</span>,<span class='kw'>mar</span><span class='kw'>=</span><span class='fl'>3</span>,<span class='kw'>mar_ind</span><span class='kw'>=</span><span class='fl'>30</span>,<span class='kw'>type</span><span class='kw'>=</span><span class='st'>'signed'</span>)
+<span class='no'>dd</span><span class='kw'>&lt;-</span><span class='fu'>ggBrain</span>(<span class='kw'>template</span><span class='kw'>=</span><span class='no'>template</span>,<span class='kw'>brains</span><span class='kw'>=</span><span class='no'>s_map1</span>,<span class='kw'>mask</span><span class='kw'>=</span><span class='no'>mask</span>,<span class='kw'>mar</span><span class='kw'>=</span><span class='fl'>3</span>,
+<span class='kw'>mar_ind</span><span class='kw'>=</span><span class='fl'>30</span>,<span class='kw'>type</span><span class='kw'>=</span><span class='st'>'signed'</span>)
 <span class='no'>dd</span>
 
 <span class='co'># positive voxelwise statistics (type='positive').</span>
 <span class='co'># Here we use absolute value of seed correlation,</span>
 <span class='co'># but a p-value map might also be applied.</span>
-<span class='no'>dd</span><span class='kw'>&lt;-</span><span class='fu'>ggBrain</span>(<span class='kw'>template</span><span class='kw'>=</span><span class='no'>template</span>,<span class='kw'>brains</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>abs</a></span>(<span class='no'>s_map1</span>),<span class='kw'>mask</span><span class='kw'>=</span><span class='no'>mask</span>,<span class='kw'>mar</span><span class='kw'>=</span><span class='fl'>3</span>,<span class='kw'>mar_ind</span><span class='kw'>=</span><span class='fl'>30</span>,<span class='kw'>type</span><span class='kw'>=</span><span class='st'>'positive'</span>)
-<span class='no'>dd</span> + <span class='fu'>theme_black_bg</span>() + <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_alpha.html'>scale_alpha</a></span>(<span class='kw'>range</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>,<span class='fl'>1</span>)) <span class='co'>#note, for type='signed', a scale is already included</span>
+<span class='no'>dd</span><span class='kw'>&lt;-</span><span class='fu'>ggBrain</span>(<span class='kw'>template</span><span class='kw'>=</span><span class='no'>template</span>,<span class='kw'>brains</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>abs</a></span>(<span class='no'>s_map1</span>),<span class='kw'>mask</span><span class='kw'>=</span><span class='no'>mask</span>,
+<span class='kw'>mar</span><span class='kw'>=</span><span class='fl'>3</span>,<span class='kw'>mar_ind</span><span class='kw'>=</span><span class='fl'>30</span>,<span class='kw'>type</span><span class='kw'>=</span><span class='st'>'positive'</span>)
+<span class='no'>dd</span> + <span class='fu'>theme_black_bg</span>() + <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_alpha.html'>scale_alpha</a></span>(<span class='kw'>range</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>,<span class='fl'>1</span>))
+<span class='co'>#note, for type='signed', a scale is already included</span>
 
 <span class='co'># Further customization can be done by using</span>
 <span class='co'># getBrainFrame directly</span>
-<span class='no'>bf</span><span class='kw'>&lt;-</span><span class='fu'>getBrainFrame</span>(<span class='kw'>brains</span><span class='kw'>=</span><span class='no'>hd_template</span>,<span class='kw'>mar</span><span class='kw'>=</span><span class='fl'>3</span>,<span class='kw'>mar_ind</span><span class='kw'>=</span><span class='fl'>93</span>,<span class='kw'>mask</span><span class='kw'>=</span><span class='no'>hd_template</span><span class='kw'>&gt;</span><span class='fl'>0</span>,<span class='kw'>center_coords</span><span class='kw'>=</span><span class='fl'>FALSE</span>)
-<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>()+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_tile.html'>geom_tile</a></span>(<span class='kw'>data</span><span class='kw'>=</span><span class='no'>bf</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>x</span><span class='kw'>=</span><span class='no'>row</span>,<span class='kw'>y</span><span class='kw'>=</span><span class='no'>col</span>,<span class='kw'>fill</span><span class='kw'>=</span><span class='no'>value</span>))+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/facet_grid.html'>facet_grid</a></span>(<span class='no'>row_ind</span>~<span class='no'>col_ind</span>)+
+<span class='no'>bf</span><span class='kw'>&lt;-</span><span class='fu'>getBrainFrame</span>(<span class='kw'>brains</span><span class='kw'>=</span><span class='no'>hd_template</span>,<span class='kw'>mar</span><span class='kw'>=</span><span class='fl'>3</span>,<span class='kw'>mar_ind</span><span class='kw'>=</span><span class='fl'>93</span>,
+<span class='kw'>mask</span><span class='kw'>=</span><span class='no'>hd_template</span><span class='kw'>&gt;</span><span class='fl'>0</span>,<span class='kw'>center_coords</span><span class='kw'>=</span><span class='fl'>FALSE</span>)
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>() +
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_tile.html'>geom_tile</a></span>(<span class='kw'>data</span><span class='kw'>=</span><span class='no'>bf</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>x</span><span class='kw'>=</span><span class='no'>row</span>,<span class='kw'>y</span><span class='kw'>=</span><span class='no'>col</span>,<span class='kw'>fill</span><span class='kw'>=</span><span class='no'>value</span>)) +
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/facet_grid.html'>facet_grid</a></span>(<span class='no'>row_ind</span>~<span class='no'>col_ind</span>)+
                 <span class='fu'>theme_black_bg</span>()+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span>(<span class='kw'>x</span><span class='kw'>=</span><span class='st'>''</span>,<span class='kw'>y</span><span class='kw'>=</span><span class='st'>''</span>)+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/coord_fixed.html'>coord_fixed</a></span>(<span class='kw'>ratio</span> <span class='kw'>=</span> <span class='fl'>1</span>)
 
 
@@ -402,11 +496,12 @@
 <span class='co'># Note, to change legend labels for figures of type='signed',</span>
 <span class='co'># we must change both the label for fill and for alpha,</span>
 <span class='co'># as ggBrain combines these two aesthetics into a custom,</span>
-<span class='co'># hardcoded legend (when combine_legend=TRUE). If separate</span>
-<span class='co'># labels are given for fill and alpha, the two aesthetic dimensions</span>
+<span class='co'># hardcoded legend (when combine_legend=TRUE). If separate </span>
+<span class='co'># labels are given for fill and alpha, the two aesthetic dimensions </span>
 <span class='co'># will appear in separate legends.</span>
 <span class='co'># For example:</span>
-<span class='no'>dd</span> <span class='kw'>&lt;-</span> <span class='fu'>ggBrain</span>(<span class='kw'>template</span><span class='kw'>=</span><span class='no'>template</span>,<span class='kw'>brains</span><span class='kw'>=</span><span class='no'>s_map1</span>,<span class='kw'>mask</span><span class='kw'>=</span><span class='no'>mask</span>,<span class='kw'>mar</span><span class='kw'>=</span><span class='fl'>3</span>,<span class='kw'>mar_ind</span><span class='kw'>=</span><span class='fl'>30</span>,<span class='kw'>type</span><span class='kw'>=</span><span class='st'>'signed'</span>)
+<span class='no'>dd</span> <span class='kw'>&lt;-</span> <span class='fu'>ggBrain</span>(<span class='kw'>template</span><span class='kw'>=</span><span class='no'>template</span>,<span class='kw'>brains</span><span class='kw'>=</span><span class='no'>s_map1</span>,
+<span class='kw'>mask</span><span class='kw'>=</span><span class='no'>mask</span>,<span class='kw'>mar</span><span class='kw'>=</span><span class='fl'>3</span>,<span class='kw'>mar_ind</span><span class='kw'>=</span><span class='fl'>30</span>,<span class='kw'>type</span><span class='kw'>=</span><span class='st'>'signed'</span>)
 <span class='co'># ex1:</span>
 <span class='no'>dd</span> + <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span>(<span class='kw'>fill</span><span class='kw'>=</span><span class='st'>'new_label'</span>,<span class='kw'>alpha</span><span class='kw'>=</span><span class='st'>'new_label'</span>)
 <span class='co'># ex2:</span>
@@ -414,13 +509,9 @@
 }</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -431,7 +522,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.0.9000.</p>
 </div>
 
       </footer>

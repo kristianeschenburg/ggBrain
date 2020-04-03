@@ -7,17 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ggplot Brain Images • ggBrain</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" integrity="sha256-PbSmjxuVAzJ6FPvNYsrXygfGhNJYyZ2GktDbkMBqQZg=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/v4-shims.min.css" integrity="sha256-A6jcAdwFD48VMjlI3GDxUd+eCQa7/KWy6G9oe/ovaPA=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
+<script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="ggplot Brain Images">
-<meta property="og:description" content="Plotting brain images with ggplot">
+<meta property="og:description" content="Plotting brain images with ggplot2 using nifti objects.
+        Useful for integrating with a tidy image framework.">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
-<body>
+<body data-spy="scroll" data-target="#toc">
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -30,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">ggBrain</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
       </span>
     </div>
 
@@ -74,29 +76,46 @@
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#ggbrain" class="anchor"></a>ggBrain</h1></div>
 
+<p><code>muschellij2</code> badges: <a href="https://travis-ci.org/muschellij2/ggBrain"><img src="https://travis-ci.org/muschellij2/ggBrain.png?branch=master" alt="Build Status"></a> <a href="https://ci.appveyor.com/project/muschellij2/ggBrain"><img src="https://ci.appveyor.com/api/projects/status/github/muschellij2/ggBrain?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a></p>
 <p>An R package of simple helper functions for creating brain image figures with ggplot. The primary workhorse function is <code>ggBrain</code>, which is documented in the vignette. Some of the images generated in the vignette are shown below.</p>
 <div id="to-install" class="section level3">
 <h3 class="hasAnchor">
 <a href="#to-install" class="anchor"></a>To install</h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode s"><code class="sourceCode gnuassembler"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co">## if needed</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">install.packages(<span class="st">"devtools"</span>)</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="co">## main package</span></a>
-<a class="sourceLine" id="cb1-5" data-line-number="5">library(devtools)</a>
-<a class="sourceLine" id="cb1-6" data-line-number="6">install_github(<span class="ch">'g</span>gBrain<span class="ch">','</span>aaronjfisher<span class="ch">',</span>build_vignettes=TRUE)</a>
-<a class="sourceLine" id="cb1-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="co">## to access help pages</span></a>
-<a class="sourceLine" id="cb1-9" data-line-number="9">library(ggBrain)</a>
-<a class="sourceLine" id="cb1-10" data-line-number="10">help(package=ggBrain)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="r"><span class="co">## if needed</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"devtools"</span>)
+
+<span class="co">## main package</span>
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">devtools</span>)
+<span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span>(<span class="st">'aaronjfisher/ggBrain'</span>,<span class="kw">build_vignettes</span><span class="kw">=</span><span class="fl">TRUE</span>)
+
+<span class="co">## to access help pages</span>
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">ggBrain</span>)
+<span class="fu"><a href="https://rdrr.io/r/utils/help.html">help</a></span>(<span class="kw">package</span><span class="kw">=</span><span class="no">ggBrain</span>)</pre></div>
 </div>
 <div id="sample-images-from-vignette" class="section level3">
 <h3 class="hasAnchor">
 <a href="#sample-images-from-vignette" class="anchor"></a>Sample images from vignette</h3>
-<p>####Structural images <img src="articles/figure/line-key-str.png" border="5"></p>
-<p>####Comparing seed maps across two subjects <img src="articles/figure/2brain_compare.png" border="5"></p>
-<p>####Tri-planar cross-hairs <img src="articles/figure/tri-panel2.png" border="5"></p>
-<p>####Basic, single panel figures <img src="articles/figure/single-plots-abs-val.png" border="5"></p>
+<div id="structural-images" class="section level4">
+<h4 class="hasAnchor">
+<a href="#structural-images" class="anchor"></a>Structural images</h4>
+<p><img src="articles/figure/line-key-str.png" border="5"></p>
+</div>
+<div id="comparing-seed-maps-across-two-subjects" class="section level4">
+<h4 class="hasAnchor">
+<a href="#comparing-seed-maps-across-two-subjects" class="anchor"></a>Comparing seed maps across two subjects</h4>
+<p><img src="articles/figure/2brain_compare.png" border="5"></p>
+</div>
+<div id="tri-planar-cross-hairs" class="section level4">
+<h4 class="hasAnchor">
+<a href="#tri-planar-cross-hairs" class="anchor"></a>Tri-planar cross-hairs</h4>
+<p><img src="articles/figure/tri-panel2.png" border="5"></p>
+</div>
+<div id="basic-single-panel-figures" class="section level4">
+<h4 class="hasAnchor">
+<a href="#basic-single-panel-figures" class="anchor"></a>Basic, single panel figures</h4>
+<p><img src="articles/figure/single-plots-abs-val.png" border="5"></p>
 <p><br><br></p>
+</div>
 </div>
 </div>
   </div>
@@ -111,7 +130,8 @@
 <div class="developers">
 <h2>Developers</h2>
 <ul class="list-unstyled">
-<li>Aaron Fisher <br><small class="roles"> Maintainer </small>  </li>
+<li>Aaron Fisher <br><small class="roles"> Author, maintainer </small>  </li>
+<li><a href="authors.html">All authors...</a></li>
 </ul>
 </div>
 
@@ -119,6 +139,7 @@
 <h2>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://travis-ci.org/aaronjfisher/ggBrain"><img src="https://travis-ci.org/aaronjfisher/ggBrain.png?branch=master" alt="Build Status"></a></li>
+<li><a href="https://ci.appveyor.com/project/aaronjfisher/ggBrain"><img src="https://ci.appveyor.com/api/projects/status/github/aaronjfisher/ggBrain?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a></li>
 </ul>
 </div>
 </div>
@@ -130,7 +151,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.0.9000.</p>
 </div>
 
       </footer>
