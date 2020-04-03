@@ -1,102 +1,14 @@
-language: r
-warnings_are_errors: false
-cache: false
-use_bioc: true
-bioc_required: true
-cran: http://cran.rstudio.com
-dist: trusty
-addons:
-  apt:
-    packages:
-    - libcurl4-openssl-dev
-    - libxml2-dev
-    - libfftw3-dev
-    - libgsl0-dev
-    - mesa-common-dev
-    - libglu1-mesa-dev
-    - devscripts
-os:
-- linux
-- osx
-services: xvfb
-r: release
-env:
-  global:
-  - R_BUILD_ARGS="--no-manual"
-  - R_CHECK_ARGS="--as-cran --install-args=--build"
-  - RGL_USE_NULL=TRUE
-  - WARNINGS_ARE_ERRORS=1
-  - PROJECT_NAME=neuroconductor
-  - DISPLAY=:99.0
-  - R_REMOTES_NO_ERRORS_FROM_WARNINGS=true
-  - _R_CHECK_FORCE_SUGGESTS_=false
-  - secure: A5KFuI+p2GdUjIk8Chf6aIyh1udyHCJ2LmSeEmrx4Ht4nQ/VNWJSYNyQ/uD5U5qf/br1SuY8njeylvxyBja+JyRnokPcxsolJc1u8rWrj5b2dVdtzm3340ybagfzKDaTMl6r7T1LgkkmGnjIyo2DZ0eYvGqk0AQiGUFJT2ITEsx1b5Q8QnZFKOVPKel9luZ1v2TXDtWXSFaLxoQMYJiCKAqdbzlC8mcFCoMme1HGPe9OGwMoPfosv1SozeA8sCbUpUKHi5uc/Qgku4OzDwJ0WS3LsrfpbcH6mjpZzkPfyPDj0C9txEBgMVrFTFdQvmIknPHMN2rYFpBvPrKt0cNUv5uVOKvAEOdICcefSDhRwCeHtx3kkO0L7Bzmn3wEq3MEoIX5n6hzdS5lMuvShoRAjW98PCW2ZDaKEGHEqRLsF4Ilwxpavo3Kkb2qkgmPuqPMWQxUIuNSa5+nKWwKWCcnDQxiHywa0N34zy0l+o3jF0tCOzzJaUG7kIeN3cwgi5Sp5d3O/OQoqOCrPv4jIOsUdkjCfd9Q0WIAaXNapWojaGvSoX8CuoCd67fwoze7wg2Ky3OsFtXGImbzR986UTzjZXiPIr6zG4LMqhIC+EFqVmLHLvZdEbB1CzsBVMrfTpMNodpiaX3GJ/0OubHFdhlLGjeyG59rMxcU08cXEArePCk=
+# R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
+
+language: R
+sudo: false
+cache: packages
+warnings_are_errors: true
+
+notifications:   
+  email:   
+    on_success: change   
+    on_failure: change
+
 before_install:
-- if [ "$TRAVIS_DIST" = "trusty" ]; then sudo apt-get -y install libgsl0ldbl ; fi
-- ulimit -n 2048
-- export LD_LIBRARY_PATH=/usr/local/clang/lib:${LD_LIBRARY_PATH}
-- export PROJ_DIR=`basename $PWD`
-- echo "travis_wait*\.log$" >> .Rbuildignore
-- fname=travis_helpers.sh
-- wget -O ${fname} http://bit.ly/travis_helpers
-- cat ${fname}; source ${fname}; rm ${fname}
-- cat DESCRIPTION
-- start_xvfb ;
-- jags_install || true;
-- if `need_v8`; then v8_install || true; fi
-- dcmtk_install || true;
-- gsl_install 2.1 || true ;
-- export rver=`r_version`; echo $rver ;
-- export PACKAGE_NAME=`package_name`
-- export RCHECK_DIR=${PACKAGE_NAME}.Rcheck
-- remove_neuroc_packages
-- export ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=1
-- x=`export_clang_cxx`; eval ${x}
-- echo "CC=${CC}, CXX=${CXX}, CXX1X=${CXX1X}"
-- echo "CXX1XSTD=${CXX1XSTD}, CXX11=${CXX11}"
-- clang_cxx
-- export cmake_version="3.11"
-- cmake --version
-- x=`cmake_setup`; echo "${x}"; eval ${x};
-- cmake --version
-- export ants_user=neuroconductor
-- if [[ "${PACKAGE_NAME}" == "ITKR" || "${PACKAGE_NAME}" == "ANTsRCore" || "${PACKAGE_NAME}"
-  == "ANTsR" ]]; then Rscript -e "install.packages(c('Rcpp', 'RcppEigen'), type =
-  'source', repo = 'http://cran.rstudio.com')" ; fi
-- if [[ "${PACKAGE_NAME}" == "ITKR" || "${PACKAGE_NAME}" == "ANTsRCore" ]]; then export
-  R_BUILD_ARGS="${R_BUILD_ARGS} --no-build-vignettes " ; export R_CHECK_ARGS="--no-vignettes
-  ${R_CHECK_ARGS}" ; fi
-- if [[ "${PACKAGE_NAME}" != "ITKR" ]]; then echo "Installing Missing Deps ITKR" ;
-  install_missing_remote_deps_all ${ants_user}/ITKR ; gh_binary_install ${ants_user}/ITKR
-  ; fi
-- if [[ "${PACKAGE_NAME}" != "ANTsRCore" && "${PACKAGE_NAME}" != "ITKR" ]]; then echo
-  "Installing Missing Deps ANTsRCore" ; install_missing_remote_deps_all ${ants_user}/ANTsRCore;
-  gh_binary_install_passive ${ants_user}/ANTsRCore ; fi
-- if [[ "${PACKAGE_NAME}" != "ANTsRCore" && "${PACKAGE_NAME}" != "ITKR" && "${PACKAGE_NAME}"
-  != "ANTsR" ]]; then echo "Installing Missing Deps ANTsR" ; install_missing_remote_deps_all
-  ${ants_user}/ANTsR ; gh_binary_install_passive ${ants_user}/ANTsR ; fi
-- if [[ "${PACKAGE_NAME}" == "ANTsR" ]]; then export _R_CHECK_FORCE_SUGGESTS_=false
-  ; fi
-- cat DESCRIPTION
-- install_remotes_no_dep
-- cat DESCRIPTION
-- echo $PATH ;
-- install_deps_no_suggests
-- install_python_requirements ;
-- R CMD javareconf ;
-- travis_run_cache
-script:
-- Rscript -e 'install.packages("remotes")'
-- Rscript -e 'remotes::install_github("hadley/pkgdown")'
-- travis_wait 100 Rscript -e 'pkgdown::build_site()'
-after_failure: 
-before_deploy: 
-deploy:
-  provider: pages
-  skip-cleanup: true
-  keep-history: true
-  local-dir: docs
-  on:
-    branch: master
-  github_token: "$GITHUB_TOKEN"
-after_deploy: 
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get install libcgal-dev libglu1-mesa-dev mesa-common-dev; fi
