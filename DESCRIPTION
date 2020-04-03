@@ -10,19 +10,13 @@ Maintainer: Aaron Fisher <fisher@jhu.edu>
 VignetteBuilder: knitr
 Depends: R (>= 3.0.2)
 Imports: ggplot2, RColorBrewer
-Suggests: 
-    knitr,
-    gridExtra,
-    brainR,
-    oro.nifti,
-    covr,
-    testthat
+Suggests: knitr, gridExtra, brainR, oro.nifti, covr, testthat
 License: GPL-2
 LazyData: true
 RoxygenNote: 6.0.1.9000
 Encoding: UTF-8
+biocViews:
 Repository: Neuroconductor
 Remotes: 
-    neuroconductor/oro.nifti@6392ccd9cbbbf5b64308cc685f0f49c4362a3d2b,
-    neuroconductor/brainR@ffb399d47d9eb6610386168d9b08047b2884aff3
-biocViews: 
+    neuroconductor/oro.nifti@dd217a96f76282fd3e05603f1bddcffca7d746b4,
+    neuroconductor/brainR@1276ab04a1c8e8a48deb6c47568b225a62403d24
